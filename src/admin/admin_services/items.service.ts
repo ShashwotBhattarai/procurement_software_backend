@@ -1,11 +1,9 @@
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { addItemsDto } from 'src/database/dtos/addItems.dto';
-import { DataSource } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Items } from 'src/database/entity/items.entity';
-import { updateItemsDto } from 'src/database/dtos/updateItems.dto';
 
 
 @Injectable()
@@ -15,8 +13,9 @@ export class ItemsService {
         public itemsRepository: Repository<Items>,
     ) { }
 
-    create(addItems_dto: addItemsDto) {
-        return this.itemsRepository.save(addItems_dto);
+    async create(createItemDto: addItemsDto): Promise<Items> {
+        const item = this.itemsRepository.create(createItemDto);
+        return this.itemsRepository.save(item);
     }
 
     async updateItem(item_id: number, updateData: Partial<Items>): Promise<Items> {
@@ -28,16 +27,28 @@ export class ItemsService {
         return this.itemsRepository.save(item);
     }
 
-    findAll(): Promise<Items[]> {
+    async findAll(): Promise<Items[]> {
         return this.itemsRepository.find();
     }
 
-    findOne(item_id: number) {
-        return this.itemsRepository.findOneBy({ item_id });
+    async findOne(id: number): Promise<Items> {
+        const item = await this.itemsRepository.createQueryBuilder('item')
+            .where('item_id = :id', { id })
+            .getOne();
+        if (!item) {
+            throw new NotFoundException(`Item with ID ${id} not found`);
+        }
+        return item;
     }
 
-    delete(item_id: number) {
-        return this.itemsRepository.delete(item_id)
+    async delete(id: number): Promise<string> {
+        const result = await this.itemsRepository.delete(id);
+        if (result.affected === 0) {
+            throw new NotFoundException(`Item with ID ${id} not found`);
+        }
+        else {
+            return `Item with ID ${id} has been deleted`;
+        }
+
     }
 }
-

@@ -9,14 +9,13 @@ import { updateItemsDto } from 'src/database/dtos/updateItems.dto';
 export class ItemsController {
     constructor(private readonly itemService: ItemsService) { }
     @Post()
-    create(@Body() addItemsDto: addItemsDto): void {
-        this.itemService.create(addItemsDto);
+    create(@Body() addItemsDto: addItemsDto) {
+        return this.itemService.create(addItemsDto);
     }
 
-    @Put()
-    update(@Body() updateItemsDto: updateItemsDto) {
-        let id: number = updateItemsDto.item_id;
-        this.itemService.updateItem(id, updateItemsDto);
+    @Put(":id")
+    update(@Body() updateItemsDto: updateItemsDto,@Param('id') id:number) {
+        return this.itemService.updateItem(id, updateItemsDto);
     }
 
     @Get()
