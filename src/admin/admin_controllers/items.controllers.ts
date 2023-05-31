@@ -1,10 +1,11 @@
 
-import { Body, Controller, Get, Post, Put, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { addItemsDto } from 'src/database/dtos/addItems.dto';
 import { ItemsService } from '../admin_services/items.service';
 import { updateItemsDto } from 'src/database/dtos/updateItems.dto';
 
-@Controller('admin')
+
+@Controller('items')
 export class ItemsController {
     constructor(private readonly itemService: ItemsService) { }
     @Post()
@@ -17,4 +18,21 @@ export class ItemsController {
         let id: number = updateItemsDto.item_id;
         this.itemService.updateItem(id, updateItemsDto);
     }
+
+    @Get()
+    findAll() {
+        return this.itemService.findAll();
+    }
+
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        const numberId: number = parseInt(id, 10);
+        return this.itemService.findOne(numberId);
+    }
+
+    @Delete(':id')
+    delete(@Param('id') id: number) {
+        return this.itemService.delete(id);
+    }
+
 } 

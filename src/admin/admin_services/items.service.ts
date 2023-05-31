@@ -24,16 +24,20 @@ export class ItemsService {
         if (!item) {
             throw new Error('Item not found');
         }
-
-        // Update the item properties with the values from the updateData
         Object.assign(item, updateData);
-
-        // Save the updated item to the database
         return this.itemsRepository.save(item);
     }
 
     findAll(): Promise<Items[]> {
         return this.itemsRepository.find();
+    }
+
+    findOne(item_id: number) {
+        return this.itemsRepository.findOneBy({ item_id });
+    }
+
+    delete(item_id: number) {
+        return this.itemsRepository.delete(item_id)
     }
 }
 
