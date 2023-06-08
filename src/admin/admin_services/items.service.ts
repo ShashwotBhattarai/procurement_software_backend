@@ -1,6 +1,6 @@
 
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { addItemsDto } from 'src/database/dtos/addItems.dto';
+import { ItemsDto } from 'src/database/dtos/Items.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Items } from 'src/database/entity/items.entity';
@@ -13,13 +13,13 @@ export class ItemsService {
         public itemsRepository: Repository<Items>,
     ) { }
 
-    async create(createItemDto: addItemsDto): Promise<Items> {
-        const item = this.itemsRepository.create(createItemDto);
+    async create(itemDto: ItemsDto): Promise<Items> {
+        const item = this.itemsRepository.create(itemDto);
         return this.itemsRepository.save(item);
     }
 
-    async updateItem(item_id: number, updateData: Partial<Items>): Promise<Items> {
-        const item = await this.itemsRepository.findOneBy({ item_id });
+    async updateItem(item_id: string, updateData: Partial<Items>): Promise<Items> {
+        const item = await this.itemsRepository.findOneBy({ id: item_id });
         if (!item) {
             throw new Error('Item not found');
         }
@@ -31,10 +31,8 @@ export class ItemsService {
         return this.itemsRepository.find();
     }
 
-    async findOne(id: number): Promise<Items> {
-        const item = await this.itemsRepository.createQueryBuilder('item')
-            .where('item_id = :id', { id })
-            .getOne();
+    async findOne(id: string): Promise<Items> {
+        const item = await this.itemsRepository.findOne({where: {id}});
         if (!item) {
             throw new NotFoundException(`Item with ID ${id} not found`);
         }

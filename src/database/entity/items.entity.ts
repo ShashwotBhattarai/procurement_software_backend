@@ -1,9 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne } from 'typeorm';
+import { Requirement } from './requirements.entity';
 
 @Entity()
 export class Items {
-    @PrimaryGeneratedColumn()
-    item_id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column()
     item_name: string;
@@ -16,4 +17,7 @@ export class Items {
 
     @Column({ default: true })
     item_unit: string;
+
+    @OneToOne((type) => Requirement, (requirement) => requirement.item)
+    requirement: Requirement;
 }

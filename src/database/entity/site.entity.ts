@@ -1,10 +1,11 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Requirement } from './requirements.entity';
 
 @Entity()
 export class Site {
-    @PrimaryGeneratedColumn()
-    site_id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column()
     site_name: string;
@@ -14,4 +15,7 @@ export class Site {
 
     @Column({ default: true })
     site_manager_name: string;
+
+    @OneToMany(()=>Requirement, requirement=>requirement.site)
+    requirement:Requirement;
 }
