@@ -6,7 +6,8 @@ import { Items } from './database/entity/items.entity';
 import { Site } from './database/entity/site.entity';
 import { Requirement } from './database/entity/requirements.entity';
 import { UserModule } from './user/user.module';
-
+import { Supplier } from './database/entity/supplier.entity';
+//import {dbConfig} from './database/dbconfig';
 
 @Module({
   imports: [AdminModule,UserModule, TypeOrmModule.forRoot({
@@ -16,8 +17,8 @@ import { UserModule } from './user/user.module';
     username: database.username,
     password: database.password,
     database: database.name,
-    entities: [Items, Site, Requirement],
-    synchronize: false,
+    entities: [Items, Site, Requirement,Supplier],
+    synchronize: true,
   })],
   controllers: [],
   providers: [],
