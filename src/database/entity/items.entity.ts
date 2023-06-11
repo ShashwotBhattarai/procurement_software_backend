@@ -18,6 +18,6 @@ export class Items {
     @Column({ default: true })
     item_unit: string;
 
-    @OneToOne((type) => Requirement, (requirement) => requirement.item)
+    @OneToMany((type) => Requirement, (requirement) => requirement.item)
     requirement: Requirement;
 }

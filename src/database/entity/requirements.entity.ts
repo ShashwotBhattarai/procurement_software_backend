@@ -1,7 +1,8 @@
 
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, JoinTable } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, JoinTable, ManyToOne, OneToMany } from 'typeorm';
 import { Items } from './items.entity';
 import { Site } from './site.entity';
+import { Inquiry } from './inquiry.entity';
 
 @Entity()
 export class Requirement {
@@ -11,12 +12,12 @@ export class Requirement {
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     requirement_date: Date;
 
-    @OneToOne(() => Site, {
+    @ManyToOne(() => Site, {
     })
     @JoinColumn()
     site: string;
 
-    @OneToOne(() => Items, {
+    @ManyToOne(() => Items, {
     })
     @JoinColumn()
     item: string;
@@ -26,5 +27,8 @@ export class Requirement {
 
     @Column()
     requirement_delivery_date: Date;
+
+    @OneToMany((type) => Inquiry, (inquiry) => inquiry.supplier)
+    inquiry: Inquiry;
 
 }
