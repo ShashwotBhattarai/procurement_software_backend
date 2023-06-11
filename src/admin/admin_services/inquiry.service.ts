@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Inquiry } from 'src/database/entity/inquiry.entity';
-import { InquiryDto } from 'src/database/dtos/inquiry.dto';
+import { Inquiry } from 'src/entities/inquiry.entity';
+import { InquiryDto } from 'src/dtos/inquiry.dto';
 
 @Injectable()
 export class InquiryService {
@@ -39,7 +39,7 @@ export class InquiryService {
     }
 
     async findAll(): Promise<Inquiry[]> {
-        return this.inquiryRepository.find({relations:['requirement','supplier']});
+        return this.inquiryRepository.find({ relations: ['requirement', 'supplier'] });
     }
 
     async findOne(id: string): Promise<Inquiry> {
@@ -47,7 +47,7 @@ export class InquiryService {
             where: {
                 id
             },
-            relations: ['requirement','supplier']
+            relations: ['requirement', 'supplier']
         })
         if (!inquiry) {
             throw new NotFoundException(`inquiry with ID ${id} not found`);

@@ -1,10 +1,8 @@
-
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { SupplierDto } from 'src/database/dtos/supplier.dto';
+import { SupplierDto } from 'src/dtos/supplier.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Supplier } from 'src/database/entity/supplier.entity';
-
+import { Supplier } from 'src/entities/supplier.entity';
 
 @Injectable()
 export class SupplierService {
@@ -32,7 +30,7 @@ export class SupplierService {
     }
 
     async findOne(id: string): Promise<Supplier> {
-        const supplier = await this.supplierRepository.findOne({where: {id}});
+        const supplier = await this.supplierRepository.findOne({ where: { id } });
         if (!supplier) {
             throw new NotFoundException(`Item with ID ${id} not found`);
         }

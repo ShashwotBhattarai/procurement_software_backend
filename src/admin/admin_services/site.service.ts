@@ -1,11 +1,9 @@
 
 import { Injectable, NotFoundException } from '@nestjs/common';
-
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Site } from 'src/database/entity/site.entity';
-import { SiteDto } from 'src/database/dtos/Site.dto';
-
+import { Site } from 'src/entities/site.entity';
+import { SiteDto } from 'src/dtos/Site.dto';
 
 @Injectable()
 export class SiteService {
@@ -14,7 +12,7 @@ export class SiteService {
         public siteRepository: Repository<Site>,
     ) { }
 
-    async create(siteDto:SiteDto): Promise<Site> {
+    async create(siteDto: SiteDto): Promise<Site> {
         const site = this.siteRepository.create(siteDto);
         return this.siteRepository.save(site);
     }
@@ -33,7 +31,7 @@ export class SiteService {
     }
 
     async findOne(id: string): Promise<Site> {
-        const site = await this.siteRepository.findOne({where:{id}});
+        const site = await this.siteRepository.findOne({ where: { id } });
         if (!site) {
             throw new NotFoundException(`Site with ID ${id} not found`);
         }

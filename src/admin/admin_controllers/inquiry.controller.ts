@@ -1,11 +1,10 @@
 import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { InquiryService } from '../admin_services/inquiry.service';
-import { RequirementDto } from 'src/database/dtos/Requirement.dto';
-import { InquiryDto } from 'src/database/dtos/inquiry.dto';
+import { InquiryDto } from 'src/dtos/inquiry.dto';
 
 @Controller('inquiry')
 export class InquiryController {
-  constructor(private readonly inquiryService: InquiryService) {}
+  constructor(private readonly inquiryService: InquiryService) { }
 
   @Post()
   create(@Body() inquiryDto: InquiryDto) {

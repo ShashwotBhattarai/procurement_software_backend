@@ -1,7 +1,7 @@
 
 import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { SiteService } from '../admin_services/site.service';
-import { SiteDto } from 'src/database/dtos/Site.dto';
+import { SiteDto } from 'src/dtos/Site.dto';
 
 @Controller('site')
 export class SiteController {
@@ -12,7 +12,7 @@ export class SiteController {
     }
 
     @Put(":id")
-    update(@Body() siteDto: SiteDto,@Param('id') id:string) {
+    update(@Body() siteDto: SiteDto, @Param('id') id: string) {
         return this.siteService.updateItem(id, siteDto);
     }
 
@@ -31,5 +31,5 @@ export class SiteController {
         return this.siteService.delete(id);
     }
 
-} 
+}
 

@@ -1,10 +1,10 @@
 import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
 import { RequirementService } from './user.service';
-import { RequirementDto } from 'src/database/dtos/Requirement.dto';
+import { RequirementDto } from 'src/dtos/Requirement.dto';
 
 @Controller('requirement')
 export class RequirementController {
-  constructor(private readonly requirementService: RequirementService) {}
+  constructor(private readonly requirementService: RequirementService) { }
 
   @Post()
   create(@Body() requirementDto: RequirementDto) {

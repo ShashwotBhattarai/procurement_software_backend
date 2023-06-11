@@ -1,4 +1,3 @@
-
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Requirement } from './requirements.entity';
 
@@ -16,6 +15,6 @@ export class Site {
     @Column({ default: true })
     site_manager_name: string;
 
-    @OneToMany(()=>Requirement, requirement=>requirement.site)
-    requirement:Requirement;
+    @OneToMany(() => Requirement, requirement => requirement.site)
+    requirement: Requirement;
 }

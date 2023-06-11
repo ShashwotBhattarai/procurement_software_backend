@@ -1,5 +1,5 @@
-import {Body,Controller,Get,Post,Put,Param,Delete} from '@nestjs/common';
-import { SupplierDto } from 'src/database/dtos/supplier.dto';
+import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
+import { SupplierDto } from 'src/dtos/supplier.dto';
 import { SupplierService } from '../admin_services/suppliers.service';
 
 @Controller('suppliers')

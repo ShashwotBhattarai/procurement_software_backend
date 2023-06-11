@@ -2,7 +2,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne } from 'typeorm';
 import { Inquiry } from './inquiry.entity';
 
-
 @Entity()
 export class Supplier {
     @PrimaryGeneratedColumn('uuid')

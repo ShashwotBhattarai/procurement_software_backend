@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Requirement } from 'src/database/entity/requirements.entity';
-import { RequirementDto } from 'src/database/dtos/Requirement.dto';
-
+import { Requirement } from 'src/entities/requirements.entity';
+import { RequirementDto } from 'src/dtos/Requirement.dto';
 
 @Injectable()
 export class RequirementService {
@@ -40,7 +39,7 @@ export class RequirementService {
     }
 
     async findAll(): Promise<Requirement[]> {
-        return this.requirementRepository.find({relations: ['item', 'site']});
+        return this.requirementRepository.find({ relations: ['item', 'site'] });
     }
 
     async findOne(id: string): Promise<Requirement> {
