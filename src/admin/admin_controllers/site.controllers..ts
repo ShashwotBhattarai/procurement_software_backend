@@ -1,8 +1,10 @@
 
-import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param, Delete, UseGuards } from '@nestjs/common';
 import { SiteService } from '../admin_services/site.service';
 import { SiteDto } from 'src/dtos/Site.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('site')
 export class SiteController {
     constructor(private readonly siteService: SiteService) { }

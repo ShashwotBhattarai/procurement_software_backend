@@ -12,10 +12,11 @@ import { Supplier } from 'src/entities/supplier.entity';
 import { Inquiry } from 'src/entities/inquiry.entity';
 import { InquiryController } from './admin_controllers/inquiry.controller';
 import { InquiryService } from './admin_services/inquiry.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry])],
     controllers: [ItemsController, SiteController, SuppliersController, InquiryController],
-    providers: [ItemsService, SiteService, SupplierService, InquiryService],
+    providers: [ItemsService, SiteService, SupplierService, InquiryService,AuthGuard],
 })
 export class AdminModule { }

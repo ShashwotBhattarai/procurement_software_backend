@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param, Delete, UseGuards } from '@nestjs/common';
 import { InquiryService } from '../admin_services/inquiry.service';
 import { InquiryDto } from 'src/dtos/inquiry.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('inquiry')
 export class InquiryController {
   constructor(private readonly inquiryService: InquiryService) { }

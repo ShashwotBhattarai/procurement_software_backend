@@ -9,9 +9,10 @@ import { UserModule } from './user/user.module';
 import { Supplier } from './entities/supplier.entity';
 import { Inquiry } from './entities/inquiry.entity';
 //import {dbConfig} from './database/dbconfig';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [AdminModule, UserModule, TypeOrmModule.forRoot({
+  imports: [AdminModule, UserModule,AuthModule, TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -20,7 +21,7 @@ import { Inquiry } from './entities/inquiry.entity';
     database: database.name,
     entities: [Items, Site, Requirement, Supplier, Inquiry],
     synchronize: false,
-  })],
+  }), AuthModule],
   controllers: [],
   providers: [],
 })

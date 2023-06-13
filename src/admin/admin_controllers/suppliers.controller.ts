@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post, Put, Param, Delete } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Param, Delete, UseGuards } from '@nestjs/common';
 import { SupplierDto } from 'src/dtos/supplier.dto';
 import { SupplierService } from '../admin_services/suppliers.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('suppliers')
 export class SuppliersController {
   constructor(private readonly suppliersService: SupplierService) { }
