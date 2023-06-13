@@ -1,4 +1,3 @@
-
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { adminCredentials } from 'src/credentials';
 import { JwtService } from '@nestjs/jwt';
@@ -8,14 +7,21 @@ export class AuthService {
   constructor(private jwtService: JwtService) {}
 
   async signIn(username: string, pass: string): Promise<any> {
-    const user = adminCredentials;
-    if (user?.password !== pass) {
+    if (
+      !(
+        adminCredentials.username === username &&
+        adminCredentials.password === pass
+      )
+    ) {
       throw new UnauthorizedException();
+    } else {
+      const payload = {
+        sub: adminCredentials.userId,
+        username: adminCredentials.username,
+      };
+      return {
+        access_token: await this.jwtService.signAsync(payload),
+      };
     }
-    const payload = { sub: user.userId, username: user.username };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
-    
   }
 }
