@@ -30,6 +30,6 @@ export class SiteController {
     delete(@Param('id') id: number) {
         return this.siteService.delete(id);
     }
-
+    
 }
 

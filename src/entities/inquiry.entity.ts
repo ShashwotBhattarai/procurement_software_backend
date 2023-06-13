@@ -12,11 +12,13 @@ export class Inquiry {
     inquiry_date: Date;
 
     @ManyToOne(() => Requirement, {
+        eager: true,
     })
     @JoinColumn()
     requirement: string;
 
     @ManyToOne(() => Supplier, {
+        eager: true,
     })
     @JoinColumn()
     supplier: string;
