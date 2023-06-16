@@ -11,9 +11,9 @@ import {
 } from '@nestjs/common';
 import { ItemsDto } from 'src/dtos/Items.dto';
 import { ItemsService } from '../admin_services/items.service';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AdminAuthGuard} from 'src/auth/adminAuth.guard';
 
-@UseGuards(AuthGuard)
+@UseGuards(AdminAuthGuard)
 @Controller('items')
 export class ItemsController {
   constructor(private readonly itemService: ItemsService) { }

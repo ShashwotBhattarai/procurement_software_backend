@@ -12,11 +12,15 @@ import { Supplier } from 'src/entities/supplier.entity';
 import { Inquiry } from 'src/entities/inquiry.entity';
 import { InquiryController } from './admin_controllers/inquiry.controller';
 import { InquiryService } from './admin_services/inquiry.service';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { CredentialsService } from './admin_services/credentials.service';
+import { CredentialsController } from './admin_controllers/credentials.controller';
+import { Credentials } from 'src/entities/credentials.entity';
+import { AuthModule } from 'src/auth/auth.module';
+
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry])],
-    controllers: [ItemsController, SiteController, SuppliersController, InquiryController],
-    providers: [ItemsService, SiteService, SupplierService, InquiryService,AuthGuard],
+    imports: [TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry, Credentials]),AuthModule],
+    controllers: [ItemsController, SiteController, SuppliersController, InquiryController,CredentialsController],
+    providers: [ItemsService, SiteService, SupplierService, InquiryService,CredentialsService,],
 })
 export class AdminModule { }

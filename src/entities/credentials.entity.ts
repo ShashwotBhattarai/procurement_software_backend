@@ -1,17 +1,19 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-
 @Entity()
-export class Rcredentials {
-    @PrimaryGeneratedColumn()
-    credentials_id: number;
+export class Credentials {
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column()
-    fullname: number;
+    fullname: string;
 
     @Column()
-    username: number;
+    username: string;
 
     @Column()
-    password: Date;
+    password: string;
+
+    @Column()
+    role: string;
 
 }

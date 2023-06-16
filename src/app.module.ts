@@ -10,6 +10,7 @@ import { Supplier } from './entities/supplier.entity';
 import { Inquiry } from './entities/inquiry.entity';
 //import {dbConfig} from './database/dbconfig';
 import { AuthModule } from './auth/auth.module';
+import { Credentials } from './entities/credentials.entity';
 
 @Module({
   imports: [AdminModule, UserModule,AuthModule, TypeOrmModule.forRoot({
@@ -19,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
     username: database.username,
     password: database.password,
     database: database.name,
-    entities: [Items, Site, Requirement, Supplier, Inquiry],
+    entities: [Items, Site, Requirement, Supplier, Inquiry,Credentials],
     synchronize: false,
-  }), AuthModule],
+  })],
   controllers: [],
   providers: [],
 })
