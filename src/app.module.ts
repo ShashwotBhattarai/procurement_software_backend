@@ -11,9 +11,10 @@ import { Inquiry } from './entities/inquiry.entity';
 //import {dbConfig} from './database/dbconfig';
 import { AuthModule } from './auth/auth.module';
 import { Credentials } from './entities/credentials.entity';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
-  imports: [AdminModule, UserModule,AuthModule, TypeOrmModule.forRoot({
+  imports: [AdminModule, UserModule,AuthModule,ConfigModule.forRoot(), TypeOrmModule.forRoot({
     type: 'mysql',
     host: 'localhost',
     port: 3306,
@@ -24,6 +25,6 @@ import { Credentials } from './entities/credentials.entity';
     synchronize: false,
   })],
   controllers: [],
-  providers: [],
+  providers: [ConfigService],
 })
 export class AppModule { }

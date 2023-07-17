@@ -5,9 +5,10 @@ import { RequirementService } from './user.service';
 import { RequirementController } from './user.controller';
 import { AuthModule } from 'src/auth/auth.module';
 import { Credentials } from 'src/entities/credentials.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Requirement,Credentials]),AuthModule],
+    imports: [TypeOrmModule.forFeature([Requirement,Credentials]),AuthModule,ConfigModule],
     controllers: [RequirementController],
     providers: [RequirementService],
 })

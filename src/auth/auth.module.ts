@@ -8,10 +8,11 @@ import { Credentials } from 'src/entities/credentials.entity';
 import { UserAuthGuard } from './userAuth.guard';
 import { AdminAuthService } from './adminAuth.service';
 import { AdminAuthGuard } from './adminAuth.guard';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [
+  imports: [ConfigModule,
     TypeOrmModule.forFeature([Credentials]),
     JwtModule.register({
       global: true,

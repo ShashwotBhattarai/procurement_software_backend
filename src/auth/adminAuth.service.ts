@@ -7,6 +7,7 @@ export class AdminAuthService {
   constructor(private jwtService: JwtService) {}
 
   async signIn(currentUsername: string, currentPass: string): Promise<any> {
+    
     if (
       !(
         adminCredentials.username === currentUsername &&
@@ -18,9 +19,11 @@ export class AdminAuthService {
       const payload = {
         username: adminCredentials.username,
       };
-      console.log("admin authservice fired");
+      
       return {
         access_token: await this.jwtService.signAsync(payload),
+        fullName:adminCredentials.fullName,
+        role:adminCredentials.role
       };
     }
   }
