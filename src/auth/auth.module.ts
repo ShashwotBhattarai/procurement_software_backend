@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '240s' },}),
+      signOptions: { expiresIn: '3600s' },}),
   ],
 
   providers: [UserAuthService, AdminAuthService,UserAuthGuard,AdminAuthGuard],

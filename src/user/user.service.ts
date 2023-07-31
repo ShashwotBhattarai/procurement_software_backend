@@ -11,30 +11,23 @@ export class RequirementService {
     public requirementRepository: Repository<Requirement>,
   ) {}
 
-  async create(requirementDto: RequirementDto): Promise<Object> {
-    const isSaved = await this.requirementRepository.save({
-      site: requirementDto.site_id,
-      item: requirementDto.item_id,
-      ...requirementDto,
-    });
+  async createMany(requirementDtos: RequirementDto[]): Promise<Object> {
+    const createdRequirements: any = [];
+    let isSaved: any;
 
+    for (const requirementDto of requirementDtos) {
+      isSaved = await this.requirementRepository.save({
+        site: requirementDto.site_id,
+        item: requirementDto.item_id,
+        ...requirementDto,
+      });
+    }
     if (isSaved) {
       return {
         status: '200 ok',
         message: 'saved to database',
       };
     }
-  }
-  async createMany(requirementDtos: RequirementDto[]): Promise<Object> {
-    const createdRequirements: any = [];
-
-    
-    for (const requirementDto of requirementDtos) {
-      const createdRequirement = await this.create(requirementDto);
-      createdRequirements.push(createdRequirement);
-    }
-
-    return createdRequirements;
   }
 
   async updateItem(
