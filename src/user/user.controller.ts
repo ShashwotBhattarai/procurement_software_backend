@@ -9,9 +9,15 @@ export class RequirementController {
   constructor(private readonly requirementService: RequirementService) { }
 
   @Post()
-  create(@Body() requirementDto: RequirementDto) {
-    return this.requirementService.create(requirementDto);
+create(@Body() requirementDtos: RequirementDto | RequirementDto[]) {
+  if (Array.isArray(requirementDtos)) {
+    // Handle the array of objects
+    return this.requirementService.createMany(requirementDtos);
+  } else {
+    // Handle a single object
+    return this.requirementService.create(requirementDtos);
   }
+}
 
   @Put(":id")
   update(@Body() requirementDto: RequirementDto, @Param('id') id: string) {
