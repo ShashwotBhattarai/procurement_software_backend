@@ -15,13 +15,7 @@ export class RequirementService {
     const createdRequirements: any = [];
     let isSaved: any;
 
-    for (const requirementDto of requirementDtos) {
-      isSaved = await this.requirementRepository.save({
-        site: requirementDto.site_id,
-        item: requirementDto.item_id,
-        ...requirementDto,
-      });
-    }
+    isSaved= await this.requirementRepository.save(requirementDtos);
     if (isSaved) {
       return {
         status: '200 ok',
