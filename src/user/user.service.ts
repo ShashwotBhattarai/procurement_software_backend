@@ -12,10 +12,9 @@ export class RequirementService {
   ) {}
 
   async createMany(requirementDtos: RequirementDto[]): Promise<Object> {
-    const createdRequirements: any = [];
     let isSaved: any;
 
-    isSaved= await this.requirementRepository.save(requirementDtos);
+    isSaved = await this.requirementRepository.save(requirementDtos);
     if (isSaved) {
       return {
         status: '200 ok',
@@ -39,7 +38,9 @@ export class RequirementService {
   }
 
   async findAll(): Promise<Requirement[]> {
-    return this.requirementRepository.find({ relations: ['item', 'site'] });
+    return this.requirementRepository.find({
+      relations: ['item_id', 'site_id'],
+    });
   }
 
   async findOne(id: string): Promise<Requirement> {
@@ -47,7 +48,7 @@ export class RequirementService {
       where: {
         id,
       },
-      relations: ['item', 'site'],
+      relations: ['item_id', 'site_id'],
     });
     if (!requirement) {
       throw new NotFoundException(`requirement with ID ${id} not found`);

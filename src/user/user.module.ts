@@ -8,8 +8,12 @@ import { Credentials } from 'src/entities/credentials.entity';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Requirement,Credentials]),AuthModule,ConfigModule],
-    controllers: [RequirementController],
-    providers: [RequirementService],
+  imports: [
+    TypeOrmModule.forFeature([Requirement, Credentials]),
+    AuthModule,
+    ConfigModule,
+  ],
+  controllers: [RequirementController],
+  providers: [RequirementService],
 })
-export class UserModule { }
+export class UserModule {}

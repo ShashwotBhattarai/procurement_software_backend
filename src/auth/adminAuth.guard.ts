@@ -24,11 +24,9 @@ export class AdminAuthGuard implements CanActivate {
       });
 
       return this.checkRole(payload);
-    
     } catch {
       throw new UnauthorizedException();
     }
-    
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {

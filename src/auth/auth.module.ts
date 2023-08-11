@@ -10,17 +10,18 @@ import { AdminAuthService } from './adminAuth.service';
 import { AdminAuthGuard } from './adminAuth.guard';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
-  imports: [ConfigModule,
+  imports: [
+    ConfigModule,
     TypeOrmModule.forFeature([Credentials]),
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '3600s' },}),
+      signOptions: { expiresIn: '3600s' },
+    }),
   ],
 
-  providers: [UserAuthService, AdminAuthService,UserAuthGuard,AdminAuthGuard],
+  providers: [UserAuthService, AdminAuthService, UserAuthGuard, AdminAuthGuard],
   controllers: [AuthController],
   exports: [UserAuthGuard, AdminAuthGuard],
 })

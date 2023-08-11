@@ -1,39 +1,44 @@
-
-import { Body, Controller, Get, Post, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { SiteService } from '../admin_services/site.service';
 import { SiteDto } from 'src/dtos/Site.dto';
 import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
 
-
+@UseGuards(AdminAuthGuard)
 @Controller('site')
 export class SiteController {
-    constructor(private readonly siteService: SiteService) { }
-    @UseGuards(AdminAuthGuard)
-    @Post()
-    create(@Body() addSiteDto: SiteDto) {
-        return this.siteService.create(addSiteDto);
-    }
-    @UseGuards(AdminAuthGuard)
-    @Put(":id")
-    update(@Body() siteDto: SiteDto, @Param('id') id: string) {
-        return this.siteService.updateItem(id, siteDto);
-    }
+  constructor(private readonly siteService: SiteService) {}
 
-    @Get()
-    findAll() {
-        return this.siteService.findAll();
-    }
+  @Post()
+  create(@Body() addSiteDto: SiteDto) {
+    return this.siteService.create(addSiteDto);
+  }
 
-    @UseGuards(AdminAuthGuard)
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.siteService.findOne(id);
-    }
-    @UseGuards(AdminAuthGuard)
-    @Delete(':id')
-    delete(@Param('id') id: number) {
-        return this.siteService.delete(id);
-    }
-    
+  @Put(':id')
+  update(@Body() siteDto: SiteDto, @Param('id') id: string) {
+    return this.siteService.updateItem(id, siteDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.siteService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.siteService.findOne(id);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.siteService.delete(id);
+  }
 }
-

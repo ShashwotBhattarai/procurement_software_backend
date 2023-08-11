@@ -18,10 +18,25 @@ import { Credentials } from 'src/entities/credentials.entity';
 import { AuthModule } from 'src/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
-    imports: [TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry, Credentials]),AuthModule,ConfigModule],
-    controllers: [ItemsController, SiteController, SuppliersController, InquiryController,CredentialsController],
-    providers: [ItemsService, SiteService, SupplierService, InquiryService,CredentialsService,],
+  imports: [
+    TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry, Credentials]),
+    AuthModule,
+    ConfigModule,
+  ],
+  controllers: [
+    ItemsController,
+    SiteController,
+    SuppliersController,
+    InquiryController,
+    CredentialsController,
+  ],
+  providers: [
+    ItemsService,
+    SiteService,
+    SupplierService,
+    InquiryService,
+    CredentialsService,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}
