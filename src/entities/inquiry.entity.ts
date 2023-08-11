@@ -20,11 +20,11 @@ export class Inquiry {
     eager: true,
   })
   @JoinColumn()
-  requirement: string;
+  requirement_id: string;
 
   @ManyToOne(() => Supplier, {
     eager: true,
   })
   @JoinColumn()
-  supplier: string;
+  supplier_id: string;
 }

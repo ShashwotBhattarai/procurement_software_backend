@@ -15,6 +15,6 @@ export class Supplier {
   @Column()
   supplier_phone_number: string;
 
-  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier)
+  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier_id)
   inquiry: Inquiry;
 }

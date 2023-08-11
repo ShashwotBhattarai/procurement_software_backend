@@ -26,7 +26,10 @@ export class InquiryService {
     }
   }
 
-  async updateItem(id: string, updateData: InquiryDto): Promise<Inquiry> {
+  async updateItem(
+    id: string,
+    updateData: Partial<InquiryDto>,
+  ): Promise<Inquiry> {
     const inquiry = await this.inquiryRepository.findOne({
       where: { id },
     });

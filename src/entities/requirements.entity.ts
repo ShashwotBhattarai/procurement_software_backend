@@ -36,6 +36,6 @@ export class Requirement {
   @Column()
   requirement_delivery_date: Date;
 
-  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier)
+  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier_id)
   inquiry: Inquiry;
 }
