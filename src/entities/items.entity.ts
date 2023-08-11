@@ -1,10 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  OneToOne,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Requirement } from './requirements.entity';
 
 @Entity()
@@ -24,6 +18,6 @@ export class Items {
   @Column({ default: true })
   item_unit: string;
 
-  @OneToMany((type) => Requirement, (requirement) => requirement.item_id)
+  @OneToMany(() => Requirement, (requirement) => requirement.item_id)
   requirement: Requirement;
 }

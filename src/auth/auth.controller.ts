@@ -1,12 +1,4 @@
-import {
-  Body,
-  Controller,
-  Post,
-  HttpCode,
-  HttpStatus,
-  Headers,
-  Get,
-} from '@nestjs/common';
+import { Controller, HttpCode, HttpStatus, Headers, Get } from '@nestjs/common';
 import { UserAuthService } from './userAuth.service';
 import { AuthDto } from 'src/dtos/auth.dto';
 import { adminCredentials } from 'src/credentials';

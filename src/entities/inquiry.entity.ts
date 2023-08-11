@@ -2,9 +2,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
   JoinColumn,
-  JoinTable,
   ManyToOne,
 } from 'typeorm';
 import { Requirement } from './requirements.entity';

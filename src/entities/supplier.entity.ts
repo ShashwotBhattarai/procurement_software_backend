@@ -1,10 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany,
-  OneToOne,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Inquiry } from './inquiry.entity';
 
 @Entity()
@@ -21,6 +15,6 @@ export class Supplier {
   @Column()
   supplier_phone_number: string;
 
-  @OneToMany((type) => Inquiry, (inquiry) => inquiry.supplier)
+  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier)
   inquiry: Inquiry;
 }

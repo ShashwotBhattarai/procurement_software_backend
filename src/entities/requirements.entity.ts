@@ -2,9 +2,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  OneToOne,
   JoinColumn,
-  JoinTable,
   ManyToOne,
   OneToMany,
 } from 'typeorm';
@@ -38,6 +36,6 @@ export class Requirement {
   @Column()
   requirement_delivery_date: Date;
 
-  @OneToMany((type) => Inquiry, (inquiry) => inquiry.supplier)
+  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier)
   inquiry: Inquiry;
 }

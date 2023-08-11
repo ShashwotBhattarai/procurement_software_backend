@@ -11,10 +11,8 @@ export class RequirementService {
     public requirementRepository: Repository<Requirement>,
   ) {}
 
-  async createMany(requirementDtos: RequirementDto[]): Promise<Object> {
-    let isSaved: any;
-
-    isSaved = await this.requirementRepository.save(requirementDtos);
+  async createMany(requirementDtos: RequirementDto[]): Promise<object> {
+    const isSaved = await this.requirementRepository.save(requirementDtos);
     if (isSaved) {
       return {
         status: '200 ok',

@@ -7,7 +7,6 @@ import {
   Param,
   Delete,
   UseGuards,
-  Injectable,
 } from '@nestjs/common';
 import { ItemsDto } from 'src/dtos/Items.dto';
 import { ItemsService } from '../admin_services/items.service';

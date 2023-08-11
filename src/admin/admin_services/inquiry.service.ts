@@ -11,7 +11,7 @@ export class InquiryService {
     public inquiryRepository: Repository<Inquiry>,
   ) {}
 
-  async create(inquiryDto: InquiryDto): Promise<Object> {
+  async create(inquiryDto: InquiryDto): Promise<object> {
     const isSaved = await this.inquiryRepository.save({
       requirement: inquiryDto.requirement_id,
       supplier: inquiryDto.supplier_id,
