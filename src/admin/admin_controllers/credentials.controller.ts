@@ -12,7 +12,7 @@ import { CredentialsDto } from 'src/dtos/credentials.dto';
 import { CredentialsService } from '../admin_services/credentials.service';
 import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
 
-@UseGuards(AdminAuthGuard)
+// @UseGuards(AdminAuthGuard)
 @Controller('credentials')
 export class CredentialsController {
   constructor(private readonly credentialsService: CredentialsService) {}

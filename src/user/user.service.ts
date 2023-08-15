@@ -14,10 +14,7 @@ export class RequirementService {
   async createMany(requirementDtos: RequirementDto[]): Promise<object> {
     const isSaved = await this.requirementRepository.save(requirementDtos);
     if (isSaved) {
-      return {
-        status: '200 ok',
-        message: 'saved to database',
-      };
+      return isSaved;
     }
   }
 

@@ -12,7 +12,7 @@ import { RequirementService } from './user.service';
 import { RequirementDto } from 'src/dtos/Requirement.dto';
 import { UserAuthGuard } from 'src/auth/UserAuth.guard';
 
-@UseGuards(UserAuthGuard)
+// @UseGuards(UserAuthGuard)
 @Controller('requirement')
 export class RequirementController {
   constructor(private readonly requirementService: RequirementService) {}

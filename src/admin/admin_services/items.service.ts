@@ -19,13 +19,14 @@ export class ItemsService {
   async updateItem(
     item_id: string,
     updateData: Partial<Items>,
-  ): Promise<Items> {
+  ): Promise<object> {
     const item = await this.itemsRepository.findOneBy({ id: item_id });
     if (!item) {
       throw new Error('Item not found');
     }
     Object.assign(item, updateData);
-    return this.itemsRepository.save(item);
+    const response = this.itemsRepository.save(item);
+    return response;
   }
 
   async findAll(): Promise<Items[]> {

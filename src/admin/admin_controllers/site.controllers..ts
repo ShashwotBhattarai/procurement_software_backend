@@ -12,7 +12,7 @@ import { SiteService } from '../admin_services/site.service';
 import { SiteDto } from 'src/dtos/Site.dto';
 import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
 
-@UseGuards(AdminAuthGuard)
+// @UseGuards(AdminAuthGuard)
 @Controller('site')
 export class SiteController {
   constructor(private readonly siteService: SiteService) {}
