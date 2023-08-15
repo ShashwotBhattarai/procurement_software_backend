@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   UseGuards,
+  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { CredentialsDto } from 'src/dtos/credentials.dto';
 import { CredentialsService } from '../admin_services/credentials.service';
@@ -16,11 +18,12 @@ import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
 @Controller('credentials')
 export class CredentialsController {
   constructor(private readonly credentialsService: CredentialsService) {}
+  @UsePipes(ValidationPipe)
   @Post()
   create(@Body() credentialsDto: CredentialsDto) {
     return this.credentialsService.create(credentialsDto);
   }
-
+  @UsePipes(ValidationPipe)
   @Put(':id')
   update(@Body() credentialsDto: CredentialsDto, @Param('id') id: string) {
     return this.credentialsService.updateItem(id, credentialsDto);

@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   UseGuards,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { SiteService } from '../admin_services/site.service';
 import { SiteDto } from 'src/dtos/Site.dto';
@@ -16,12 +18,12 @@ import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
 @Controller('site')
 export class SiteController {
   constructor(private readonly siteService: SiteService) {}
-
+  @UsePipes(ValidationPipe)
   @Post()
   create(@Body() addSiteDto: SiteDto) {
     return this.siteService.create(addSiteDto);
   }
-
+  @UsePipes(ValidationPipe)
   @Put(':id')
   update(@Body() siteDto: SiteDto, @Param('id') id: string) {
     return this.siteService.updateItem(id, siteDto);
