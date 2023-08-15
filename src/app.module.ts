@@ -9,7 +9,7 @@ import { Supplier } from './entities/supplier.entity';
 import { Inquiry } from './entities/inquiry.entity';
 import { AuthModule } from './auth/auth.module';
 import { Credentials } from './entities/credentials.entity';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -31,6 +31,6 @@ import { ConfigModule } from '@nestjs/config';
     }),
   ],
   controllers: [],
-  providers: [],
+  providers: [ConfigService],
 })
 export class AppModule {}

@@ -17,6 +17,7 @@ export class AdminAuthService {
       const payload = {
         username: process.env.adminCredentials_username,
       };
+      console.log(process.env.jwtConstants_secret);
 
       return {
         access_token: await this.jwtService.signAsync(payload),

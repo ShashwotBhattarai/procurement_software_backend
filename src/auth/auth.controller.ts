@@ -1,7 +1,6 @@
 import { Controller, HttpCode, HttpStatus, Headers, Get } from '@nestjs/common';
 import { UserAuthService } from './userAuth.service';
 import { AuthDto } from 'src/dtos/auth.dto';
-import { adminCredentials } from 'src/credentials';
 import { AdminAuthService } from './adminAuth.service';
 
 @Controller('auth')
@@ -32,7 +31,7 @@ export class AuthController {
     signInDto.password = password;
 
     const currentUser = signInDto.username;
-    if (currentUser === adminCredentials.username) {
+    if (currentUser === process.env.adminCredentials_username) {
       return this.adminAuthService.signIn(
         signInDto.username,
         signInDto.password,
