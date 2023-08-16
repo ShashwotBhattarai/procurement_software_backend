@@ -8,11 +8,11 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { SupplierDto } from 'src/dtos/supplier.dto';
+import { SupplierDto } from 'src/models/supplier.dto';
 import { SupplierService } from '../admin_services/suppliers.service';
-import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
+// import { AdminAuthGuard } from 'src/login/adminAuth.guard';
 
-@UseGuards(AdminAuthGuard)
+// @UseGuards(AdminAuthGuard)
 @Controller('suppliers')
 export class SuppliersController {
   constructor(private readonly suppliersService: SupplierService) {}

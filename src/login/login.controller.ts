@@ -1,10 +1,10 @@
 import { Controller, HttpCode, HttpStatus, Headers, Get } from '@nestjs/common';
 import { UserAuthService } from './userAuth.service';
-import { AuthDto } from 'src/dtos/auth.dto';
+import { AuthDto } from 'src/models/auth.dto';
 import { AdminAuthService } from './adminAuth.service';
 
 @Controller('auth')
-export class AuthController {
+export class LoginController {
   constructor(
     private userAuthService: UserAuthService,
     private adminAuthService: AdminAuthService,
@@ -13,18 +13,13 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Get('login')
   signIn(@Headers() headers) {
-    console.log(headers);
     const authHeader = headers['authorization'];
-    const encodedCredentials = authHeader.split(' ')[1]; // Extract the encoded credentials from the "Basic" scheme
+    const encodedCredentials = authHeader.split(' ')[1];
     const decodedCredentials = Buffer.from(
       encodedCredentials,
       'base64',
     ).toString('utf-8');
     const [username, password] = decodedCredentials.split(':');
-
-    // Now you have access to the extracted username and password
-    console.log('Username:', username);
-    console.log('Password:', password);
 
     const signInDto: AuthDto = new AuthDto();
     signInDto.username = username;

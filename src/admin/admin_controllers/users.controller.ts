@@ -10,14 +10,14 @@ import {
   ValidationPipe,
   UsePipes,
 } from '@nestjs/common';
-import { CredentialsDto } from 'src/dtos/credentials.dto';
-import { CredentialsService } from '../admin_services/credentials.service';
-import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
+import { CredentialsDto } from 'src/models/credentials.dto';
+import { UsersService } from '../admin_services/users.service';
+import { AdminAuthGuard } from 'src/login/adminAuth.guard';
 
 // @UseGuards(AdminAuthGuard)
 @Controller('credentials')
-export class CredentialsController {
-  constructor(private readonly credentialsService: CredentialsService) {}
+export class UsersController {
+  constructor(private readonly credentialsService: UsersService) {}
   @UsePipes(ValidationPipe)
   @Post()
   create(@Body() credentialsDto: CredentialsDto) {

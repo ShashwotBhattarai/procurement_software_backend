@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UserAuthService } from './userAuth.service';
 import { JwtModule } from '@nestjs/jwt';
-import { AuthController } from './auth.controller';
+import { LoginController } from './login.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Credentials } from 'src/entities/credentials.entity';
 import { UserAuthGuard } from './userAuth.guard';
@@ -28,7 +28,7 @@ import 'dotenv/config';
     AdminAuthGuard,
     ConfigService,
   ],
-  controllers: [AuthController],
+  controllers: [LoginController],
   exports: [UserAuthGuard, AdminAuthGuard],
 })
-export class AuthModule {}
+export class LoginModule {}

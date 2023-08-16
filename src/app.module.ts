@@ -7,15 +7,15 @@ import { Requirement } from './entities/requirements.entity';
 import { UserModule } from './user/user.module';
 import { Supplier } from './entities/supplier.entity';
 import { Inquiry } from './entities/inquiry.entity';
-import { AuthModule } from './auth/auth.module';
+import { LoginModule } from './login/login.module';
 import { Credentials } from './entities/credentials.entity';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     AdminModule,
     UserModule,
-    AuthModule,
+    LoginModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -31,6 +31,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
   ],
   controllers: [],
-  providers: [ConfigService],
+  providers: [],
 })
 export class AppModule {}

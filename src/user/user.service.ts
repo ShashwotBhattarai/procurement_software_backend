@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Requirement } from 'src/entities/requirements.entity';
-import { RequirementDto } from 'src/dtos/Requirement.dto';
+import { RequirementDto } from 'src/models/Requirement.dto';
 
 @Injectable()
 export class RequirementService {

@@ -9,8 +9,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { InquiryService } from '../admin_services/inquiry.service';
-import { InquiryDto } from 'src/dtos/inquiry.dto';
-import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
+import { InquiryDto } from 'src/models/inquiry.dto';
+import { AdminAuthGuard } from 'src/login/adminAuth.guard';
 
 @UseGuards(AdminAuthGuard)
 @Controller('inquiry')

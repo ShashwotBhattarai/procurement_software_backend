@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CredentialsDto } from 'src/dtos/credentials.dto';
+import { CredentialsDto } from 'src/models/credentials.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Credentials } from 'src/entities/credentials.entity';
 
 @Injectable()
-export class CredentialsService {
+export class UsersService {
   constructor(
     @InjectRepository(Credentials)
     public credentialsRepository: Repository<Credentials>,

@@ -4,7 +4,7 @@ import { ItemsService } from './admin_services/items.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Items } from 'src/entities/items.entity';
 import { Site } from 'src/entities/site.entity';
-import { SiteController } from './admin_controllers/site.controllers.';
+import { SitesController } from './admin_controllers/sites.controllers.';
 import { SiteService } from './admin_services/site.service';
 import { SuppliersController } from './admin_controllers/suppliers.controller';
 import { SupplierService } from './admin_services/suppliers.service';
@@ -12,31 +12,31 @@ import { Supplier } from 'src/entities/supplier.entity';
 import { Inquiry } from 'src/entities/inquiry.entity';
 import { InquiryController } from './admin_controllers/inquiry.controller';
 import { InquiryService } from './admin_services/inquiry.service';
-import { CredentialsService } from './admin_services/credentials.service';
-import { CredentialsController } from './admin_controllers/credentials.controller';
+import { UsersService } from './admin_services/users.service';
+import { UsersController } from './admin_controllers/users.controller';
 import { Credentials } from 'src/entities/credentials.entity';
-import { AuthModule } from 'src/auth/auth.module';
+import { LoginModule } from 'src/login/login.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Items, Site, Supplier, Inquiry, Credentials]),
-    AuthModule,
+    LoginModule,
     ConfigModule,
   ],
   controllers: [
     ItemsController,
-    SiteController,
+    SitesController,
     SuppliersController,
     InquiryController,
-    CredentialsController,
+    UsersController,
   ],
   providers: [
     ItemsService,
     SiteService,
     SupplierService,
     InquiryService,
-    CredentialsService,
+    UsersService,
   ],
 })
 export class AdminModule {}

@@ -11,12 +11,12 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { SiteService } from '../admin_services/site.service';
-import { SiteDto } from 'src/dtos/Site.dto';
-import { AdminAuthGuard } from 'src/auth/adminAuth.guard';
+import { SiteDto } from 'src/models/Site.dto';
+import { AdminAuthGuard } from 'src/login/adminAuth.guard';
 
 // @UseGuards(AdminAuthGuard)
 @Controller('site')
-export class SiteController {
+export class SitesController {
   constructor(private readonly siteService: SiteService) {}
   @UsePipes(ValidationPipe)
   @Post()

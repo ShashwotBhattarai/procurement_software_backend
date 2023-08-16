@@ -12,8 +12,8 @@ import {
   ParseArrayPipe,
 } from '@nestjs/common';
 import { RequirementService } from './user.service';
-import { RequirementDto } from 'src/dtos/Requirement.dto';
-import { UserAuthGuard } from 'src/auth/UserAuth.guard';
+import { RequirementDto } from 'src/models/Requirement.dto';
+import { UserAuthGuard } from 'src/login/UserAuth.guard';
 
 // @UseGuards(UserAuthGuard)
 @Controller('requirement')
