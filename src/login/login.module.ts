@@ -3,7 +3,7 @@ import { UserAuthService } from './userAuth.service';
 import { JwtModule } from '@nestjs/jwt';
 import { LoginController } from './login.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Credentials } from 'src/entities/credentials.entity';
+import { Credentials } from '../entities/credentials.entity';
 import { UserAuthGuard } from './userAuth.guard';
 import { AdminAuthService } from './adminAuth.service';
 import { AdminAuthGuard } from './adminAuth.guard';

@@ -4,11 +4,9 @@ import {
   PrimaryGeneratedColumn,
   JoinColumn,
   ManyToOne,
-  OneToMany,
 } from 'typeorm';
 import { Items } from './items.entity';
 import { Site } from './site.entity';
-import { Inquiry } from './inquiry.entity';
 
 @Entity()
 export class Requirement {
@@ -35,7 +33,4 @@ export class Requirement {
 
   @Column()
   requirement_delivery_date: Date;
-
-  @OneToMany(() => Inquiry, (inquiry) => inquiry.supplier_id)
-  inquiry: Inquiry;
 }

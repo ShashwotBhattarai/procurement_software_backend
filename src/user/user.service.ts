@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Requirement } from 'src/entities/requirements.entity';
+import { Requirement } from '../entities/requirements.entity';
 import { RequirementDto } from 'src/models/Requirement.dto';
 
 @Injectable()
